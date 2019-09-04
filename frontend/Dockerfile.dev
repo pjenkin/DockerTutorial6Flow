@@ -1,0 +1,13 @@
+#6-64 workflow demonstration (for dev environment)
+FROM node:alpine
+
+WORKDIR '/app'
+
+# copy relatively unchanging dependencies first
+COPY package.json .     
+RUN npm install
+
+# copy relatively mutable app source code last
+COPY . .                
+
+CMD ["npm", "run", "start"]  # command line commands to start the React app via npm
