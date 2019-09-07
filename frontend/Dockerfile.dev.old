@@ -12,8 +12,9 @@ RUN npm install
 
 # copy relatively mutable app source code last
 COPY . .                
+# COPY . /app
+# try copying to /app on container instead (as error (on final stage) - npm ERR! enoent ENOENT: no such file or directory, open '/app/package.json')
 
 RUN ls -al
 #diagnostic
-CMD ["npm", "run", "start"]  
-# command line commands to start the React app via npm
+CMD ["npm", "run", "start"]  # command line commands to start the React app via npm
